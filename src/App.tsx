@@ -3,6 +3,7 @@ import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import BillingCreate from "./pages/billing-create.tsx";
 import Home from "./pages/home.tsx";
+import BillingPreview from "./pages/billing-preview.tsx";
 
 function App() {
   const { toggleColorMode } = useColorMode();
@@ -32,6 +33,7 @@ function App() {
           <Routes>
             <Route path="/" Component={Home} />
             <Route path="/billing/create" Component={BillingCreate} />
+            <Route path="/billing/preview" Component={BillingPreview} />
           </Routes>
         </>
       </Router>
