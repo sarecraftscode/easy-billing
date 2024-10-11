@@ -68,7 +68,7 @@ const BillingForm = () => {
 
     const updatedTotalAmount = newLineItems.reduce(
       (total, item) => total + item.totalPrice,
-      0,
+      0
     );
 
     setBilling({
@@ -81,7 +81,7 @@ const BillingForm = () => {
   const updateItemTotalPrice = (
     name: string,
     value: string,
-    item: LineItem,
+    item: LineItem
   ) => {
     const parsedValue = parseFloat(value) || 0;
     if (name === "unitPrice") {
@@ -111,7 +111,7 @@ const BillingForm = () => {
 
     setBilling({
       ...billing,
-      lineItems: [...billing.lineItems, newLineItem],
+      lineItems: [...(billing.lineItems || []), newLineItem],
     });
   };
 

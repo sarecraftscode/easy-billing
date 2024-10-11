@@ -40,6 +40,7 @@ class Store {
       unitPrice: 0,
       quantity: 1,
       totalPrice: 0,
+      date: new Date(),
     };
 
     // Add the new line item and update the billing signal
@@ -88,7 +89,7 @@ class Store {
     // Calculate the total amount for all line items
     const updatedTotalAmount = newLineItems.reduce(
       (total, item) => total + item.totalPrice,
-      0,
+      0
     );
 
     // Update the entire billing object with new line items and total amount

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { LineItem } from "../models/billing.ts";
 import useStore from "../store/useStore.ts";
 
@@ -15,7 +15,10 @@ const LineItems = () => {
   ]);
 
   // Handle changes in line items (description, unitPrice, quantity)
-  const handleLineItemChange = (event, index) => {
+  const handleLineItemChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
     const { name, value } = event.target;
     store.updateTotalAmount(name, value, index);
   };
