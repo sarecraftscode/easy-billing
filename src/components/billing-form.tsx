@@ -106,6 +106,7 @@ const BillingForm = () => {
       unitPrice: 0,
       quantity: 1,
       totalPrice: 0,
+      date: new Date(),
     };
 
     setBilling({
@@ -134,11 +135,21 @@ const BillingForm = () => {
         borderRadius="md"
       >
         <Flex w="full" mb={10} flexDirection={["column", "row"]}>
-          <VStack w="full" spacing={4} alignItems="flex-start">
+          <VStack
+            w="container.md"
+            spacing={4}
+            alignItems="flex-start"
+            margin="5"
+          >
             <Company type="Emitting" />
           </VStack>
 
-          <VStack w="full" spacing={4} alignItems="flex-start" mt={[4, 0]}>
+          <VStack
+            w="container.md"
+            spacing={4}
+            alignItems="flex-start"
+            margin="5"
+          >
             <Company type="Paying" />
           </VStack>
         </Flex>

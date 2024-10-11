@@ -193,10 +193,6 @@ const MyDocument = () => (
   </Document>
 );
 
-const generateFileName = () => {
-  return `facture-${billing.currentDate?.toLocaleDateString()}.pdf`;
-};
-
 function BillingPreview() {
   return (
     <div className="container">
