@@ -1,7 +1,7 @@
 import { store } from "./store";
 
 const useStore = () => {
-    return { store };
+  return { store };
 };
 
 export default useStore;

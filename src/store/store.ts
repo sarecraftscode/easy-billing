@@ -88,7 +88,7 @@ class Store {
     // Calculate the total amount for all line items
     const updatedTotalAmount = newLineItems.reduce(
       (total, item) => total + item.totalPrice,
-      0
+      0,
     );
 
     // Update the entire billing object with new line items and total amount
