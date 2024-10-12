@@ -179,7 +179,7 @@ const BillingForm = () => {
             </Table>
           </VStack>
 
-          <VStack w="full" mb={10} spacing={4} alignItems="flex-start">
+          <VStack w="full" mb={10} spacing={4} alignItems="flex-end">
             <Heading size="md">
               Montant total: {formatAmount(billing.totalAmount)}{" "}
             </Heading>
