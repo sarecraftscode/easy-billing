@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from "@react-pdf/renderer";
+import formatDate from "../helpers/format-date";
 import { Billing } from "../models/billing";
 
 // Create styles for the PDF document
@@ -65,45 +66,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const billing: Billing = {
-  emittingCompany: {
-    name: "EMITTING COMPANY",
-    type: "Emitting",
-    address: "34 rue de la Paix",
-    phone: "0606060606",
-    email: "emitting@gmail.com",
-    siret: "676878787878",
-  },
-  payingCompany: {
-    name: "PAYING COMPANY",
-    type: "Paying",
-    address: "56 rue de la Liberté",
-    phone: "0707070707",
-    email: "paying@gmail.com",
-    siret: "989898989898",
-  },
-  currentDate: new Date(),
-  lineItems: [
-    {
-      description: "Visite 1",
-      unitPrice: 100,
-      quantity: 1,
-      date: new Date(),
-      totalPrice: 100,
-    },
-    {
-      description: "Visite 2  hôtel Dieu",
-      unitPrice: 100,
-      quantity: 2,
-      date: new Date(),
-      totalPrice: 200,
-    },
-  ],
-  totalAmount: 300,
+type MyDocumentProps = {
+  billing: Billing;
 };
 
 // Create a PDF document component
-const MyDocument = () => (
+const MyDocument = ({ billing }: MyDocumentProps) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View>
@@ -176,7 +144,7 @@ const MyDocument = () => (
                   <Text style={styles.lineItemText}>{item.unitPrice}</Text>
                   <Text style={styles.lineItemText}>{item.quantity}</Text>
                   <Text style={styles.lineItemText}>
-                    {item.date.toLocaleDateString()}
+                    {formatDate(item.date)}
                   </Text>
                   <Text style={styles.lineItemText}>{item.totalPrice}</Text>
                 </View>
@@ -193,7 +161,11 @@ const MyDocument = () => (
   </Document>
 );
 
-function BillingPreview() {
+type BillingPreviewProps = {
+  billing: Billing;
+};
+
+function BillingPreview({ billing }: BillingPreviewProps) {
   return (
     <div className="container">
       {/* PDF Download Link 
@@ -208,7 +180,7 @@ function BillingPreview() {
       </PDFDownloadLink>
       */}
       <PDFViewer width="100%" height={800}>
-        <MyDocument />
+        <MyDocument billing={billing} />
       </PDFViewer>
     </div>
   );
