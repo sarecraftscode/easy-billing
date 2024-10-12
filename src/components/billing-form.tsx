@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import useBilling from "../hooks/use-billing.ts";
 import Company from "./company.tsx";
+import formatAmount from "../helpers/format-amount.ts";
 
 const BillingForm = () => {
   const { billing, updateTotalAmount, updateCurrentDate, addNewLineItem } =
@@ -24,14 +25,6 @@ const BillingForm = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("Form submitted");
-  };
-
-  const formatAmount = (amount: number | undefined): string => {
-    if (!amount) return "0,00 €";
-    return new Intl.NumberFormat("fr-FR", {
-      style: "currency",
-      currency: "EUR",
-    }).format(amount);
   };
 
   return (
