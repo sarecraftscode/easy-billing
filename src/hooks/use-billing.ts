@@ -1,38 +1,16 @@
 import { useState } from "react";
+import { InitializeBillingUseCase } from "../domains/usecases/InitializeBillingUseCase";
 import { Billing, LineItem } from "../models/billing";
 
 const useBilling = () => {
-  const [billing, setBilling] = useState<Billing>({
-    emittingCompany: {
-      name: "",
-      type: "Emitting",
-      address: "",
-      phone: "",
-      email: "",
-      siret: "",
-    },
-    payingCompany: {
-      name: "",
-      type: "Paying",
-      address: "",
-      phone: "",
-      email: "",
-      siret: "",
-    },
-    currentDate: new Date(),
-    lineItems: [
-      {
-        description: "",
-        unitPrice: 0,
-        quantity: 1,
-        totalPrice: 0,
-      },
-    ] as LineItem[],
-    totalAmount: 0,
-  });
+  const initializeBillingUseCase = new InitializeBillingUseCase();
+
+  const [billing, setBilling] = useState<Billing>(
+    initializeBillingUseCase.execute()
+  );
 
   const updateTotalAmount = (name: string, value: string, index: number) => {
-    const newLineItems = billing.lineItems?.flatMap((item, i) => {
+    const newLineItems = billing?.lineItems?.flatMap((item, i) => {
       if (index === i) {
         const updatedTotalPrice = updateItemTotalPrice(name, value, item);
         return {
@@ -89,7 +67,7 @@ const useBilling = () => {
 
     setBilling({
       ...billing,
-      lineItems: [...(billing.lineItems || []), newLineItem],
+      lineItems: [...(billing?.lineItems || []), newLineItem],
     });
   };
 
