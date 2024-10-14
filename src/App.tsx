@@ -26,7 +26,7 @@ function App() {
               <Button variant="link">Create Billing</Button>
             </Link>
             <Button onClick={toggleColorMode} variant="link">
-              {useColorMode().colorMode === "light" ? "🌚" : "🌞"}
+              {useColorMode().colorMode === "light" ? "🌗" : "🌞"}
             </Button>
           </nav>
           <Routes>
