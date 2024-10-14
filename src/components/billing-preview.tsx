@@ -165,25 +165,14 @@ type BillingPreviewProps = {
   billing: Billing;
 };
 
-function BillingPreview({ billing }: BillingPreviewProps) {
+const BillingPreview: React.FC<BillingPreviewProps> = ({ billing }) => {
   return (
     <div className="container">
-      {/* PDF Download Link 
-      <PDFDownloadLink document={<MyDocument />} fileName={generateFileName}>
-        {({ loading }) =>
-          loading ? (
-            <button className="btn btn-secondary">Loading PDF...</button>
-          ) : (
-            <button className="btn btn-primary">Download PDF</button>
-          )
-        }
-      </PDFDownloadLink>
-      */}
       <PDFViewer width="100%" height={800}>
         <MyDocument billing={billing} />
       </PDFViewer>
     </div>
   );
-}
+};
 
 export default BillingPreview;

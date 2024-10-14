@@ -84,6 +84,7 @@ const useBilling = () => {
       unitPrice: 0,
       quantity: 1,
       totalPrice: 0,
+      date: new Date(),
     };
 
     setBilling({
