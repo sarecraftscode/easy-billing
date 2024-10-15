@@ -6,8 +6,8 @@ import {
   Text,
   View,
 } from "@react-pdf/renderer";
+import { Billing } from "../domains/entities/billing";
 import formatDate from "../helpers/format-date";
-import { Billing } from "../models/billing";
 
 // Create styles for the PDF document
 const styles = StyleSheet.create({
@@ -42,13 +42,23 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#000",
   },
+  lineItemHeading: {
+    flexDirection: "row",
+    marginBottom: 5,
+    backgroundColor: "#0D92F4",
+  },
   lineItemContainer: {
     flexDirection: "row",
     marginBottom: 5,
   },
-  lineItemText: {
+  lineItemHeadingText: {
+    color: "#FFFFFF",
     fontSize: 10,
+    width: "20%",
+  },
+  lineItemText: {
     color: "#555",
+    fontSize: 10,
     width: "20%",
   },
   companyContainer: {
@@ -56,13 +66,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 20,
   },
+  customerContainer: {
+    flexDirection: "row-reverse",
+    justifyContent: "space-between",
+    marginBottom: 20,
+  },
   companySection: {
     width: "45%",
-  },
-  lineItemsBorder: {
-    borderWidth: 1,
-    borderColor: "#000",
-    padding: 10,
   },
 });
 
@@ -78,44 +88,46 @@ const MyDocument = ({ billing }: MyDocumentProps) => (
         <Text style={styles.title}>Facture N°15</Text>
 
         <View style={styles.companyContainer}>
-          {billing.emittingCompany && (
-            <View style={styles.companySection}>
+          {billing.company && (
+            <View style={[styles.companySection, { alignSelf: "flex-end" }]}>
               <Text style={styles.header}>Société émettrice</Text>
+              <Text style={styles.product}>Nom: {billing.company?.name}</Text>
               <Text style={styles.product}>
-                Nom: {billing.emittingCompany?.name}
+                Adresse: {billing.company?.address}
               </Text>
               <Text style={styles.product}>
-                Adresse: {billing.emittingCompany?.address}
+                Téléphone: {billing.company?.phone}
               </Text>
               <Text style={styles.product}>
-                Téléphone: {billing.emittingCompany?.phone}
+                Email: {billing.company?.email}
               </Text>
               <Text style={styles.product}>
-                Email: {billing.emittingCompany?.email}
-              </Text>
-              <Text style={styles.product}>
-                SIRET: {billing.emittingCompany?.siret}
+                SIRET: {billing.company?.siret}
               </Text>
             </View>
           )}
-
-          {billing.payingCompany && (
-            <View style={styles.companySection}>
+        </View>
+        <View style={styles.customerContainer}>
+          {billing.customer && (
+            <View
+              style={[
+                styles.companySection,
+                { alignSelf: "flex-end", marginTop: 20 },
+              ]}
+            >
               <Text style={styles.header}>Société payeuse</Text>
+              <Text style={styles.product}>Nom: {billing.customer?.name}</Text>
               <Text style={styles.product}>
-                Nom: {billing.payingCompany?.name}
+                Adresse: {billing.customer?.address}
               </Text>
               <Text style={styles.product}>
-                Adresse: {billing.payingCompany?.address}
+                Téléphone: {billing.customer?.phone}
               </Text>
               <Text style={styles.product}>
-                Téléphone: {billing.payingCompany?.phone}
+                Email: {billing.customer?.email}
               </Text>
               <Text style={styles.product}>
-                Email: {billing.payingCompany?.email}
-              </Text>
-              <Text style={styles.product}>
-                SIRET: {billing.payingCompany?.siret}
+                SIRET: {billing.customer?.siret}
               </Text>
             </View>
           )}
@@ -123,20 +135,19 @@ const MyDocument = ({ billing }: MyDocumentProps) => (
 
         <View style={styles.section}>
           <Text style={styles.product}>
-            Date de facturation: {billing.currentDate?.toLocaleDateString()}
+            Date d'émission: {billing.currentDate?.toLocaleDateString()}
           </Text>
         </View>
 
         {billing.lineItems && (
-          <View style={[styles.section, styles.lineItemsBorder]}>
-            <Text style={styles.header}>Désignations</Text>
+          <View style={[styles.section]}>
             <View>
-              <View style={styles.lineItemContainer}>
-                <Text style={styles.lineItemText}>Description</Text>
-                <Text style={styles.lineItemText}>Prix unitaire</Text>
-                <Text style={styles.lineItemText}>Quantité</Text>
-                <Text style={styles.lineItemText}>Date</Text>
-                <Text style={styles.lineItemText}>Prix total</Text>
+              <View style={styles.lineItemHeading}>
+                <Text style={styles.lineItemHeadingText}>Description</Text>
+                <Text style={styles.lineItemHeadingText}>Prix unitaire</Text>
+                <Text style={styles.lineItemHeadingText}>Quantité</Text>
+                <Text style={styles.lineItemHeadingText}>Date</Text>
+                <Text style={styles.lineItemHeadingText}>Prix total</Text>
               </View>
               {billing.lineItems.map((item, index) => (
                 <View key={index} style={styles.lineItemContainer}>

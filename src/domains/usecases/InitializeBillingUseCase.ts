@@ -1,19 +1,19 @@
-import { Billing, LineItem } from "../../models/billing";
+import { Billing, LineItem } from "../entities/billing";
 
 export class InitializeBillingUseCase {
   execute(): Billing {
     return {
-      emittingCompany: {
+      company: {
         name: "",
-        type: "Emitting",
+        type: "Company",
         address: "",
         phone: "",
         email: "",
         siret: "",
       },
-      payingCompany: {
+      customer: {
         name: "",
-        type: "Paying",
+        type: "Customer",
         address: "",
         phone: "",
         email: "",

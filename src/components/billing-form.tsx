@@ -65,6 +65,9 @@ const BillingForm = () => {
           boxShadow="md"
           borderRadius="md"
         >
+          <VStack w="full" alignItems="flex-start" mb={10}>
+            <Heading size="1xl">Facture N°0001</Heading>
+          </VStack>
           <Flex w="full" mb={10} flexDirection={["column", "row"]}>
             <VStack
               w="container.md"
@@ -72,7 +75,7 @@ const BillingForm = () => {
               alignItems="flex-start"
               margin="5"
             >
-              <Company type="Emitting" />
+              <Company type="Company" />
             </VStack>
 
             <VStack
@@ -81,13 +84,13 @@ const BillingForm = () => {
               alignItems="flex-start"
               margin="5"
             >
-              <Company type="Paying" />
+              <Company type="Customer" />
             </VStack>
           </Flex>
 
           <VStack w="min" mb={10}>
             <FormControl>
-              <FormLabel>Date</FormLabel>
+              <FormLabel>Date d'émission</FormLabel>
               <Input
                 type="date"
                 value={billing.currentDate?.toISOString().slice(0, 10)}
@@ -101,7 +104,6 @@ const BillingForm = () => {
             <Table variant="simple">
               <Thead>
                 <Tr>
-                  <Th>Désignation</Th>
                   <Th>Date</Th>
                   <Th>Quantité</Th>
                   <Th>PU HT</Th>

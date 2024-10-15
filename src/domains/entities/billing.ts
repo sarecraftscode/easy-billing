@@ -6,12 +6,14 @@ export type LineItem = {
   quantity: number;
   date: Date;
   totalPrice: number;
+  vat?: number;
 };
 
 export type Billing = {
-  emittingCompany?: CompanyModel;
-  payingCompany?: CompanyModel;
+  company?: CompanyModel;
+  customer?: CompanyModel;
   currentDate?: Date;
   lineItems?: LineItem[];
   totalAmount?: number;
+  paymentDelay?: number;
 };

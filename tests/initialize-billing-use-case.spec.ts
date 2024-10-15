@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { LineItem } from "../src/domains/entities/billing.ts";
 import { InitializeBillingUseCase } from "../src/domains/usecases/InitializeBillingUseCase.ts";
-import { LineItem } from "../src/models/billing.ts";
 
 describe("InitializeBillingUseCase", () => {
   it("should initialize billing for a user", () => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { Billing, LineItem } from "../domains/entities/billing";
 import { InitializeBillingUseCase } from "../domains/usecases/InitializeBillingUseCase";
-import { Billing, LineItem } from "../models/billing";
 
 const useBilling = () => {
   const initializeBillingUseCase = new InitializeBillingUseCase();

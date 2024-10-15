@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { LineItem } from "../models/billing.ts";
+import { LineItem } from "../domains/entities/billing.ts";
 import useStore from "../store/useStore.ts";
 
 const LineItems = () => {

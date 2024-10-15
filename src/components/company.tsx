@@ -9,7 +9,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { CompanyModel, CompanyType } from "../models/companyModel.ts";
+import { CompanyModel, CompanyType } from "../domains/entities/companyModel.ts";
 
 interface CompanyProps {
   type: CompanyType;
@@ -28,7 +28,7 @@ const Company = ({ type }: CompanyProps) => {
   return (
     <VStack spacing="3" alignItems="flex-start">
       <Heading size="1xs">
-        Société {type === "Emitting" ? "émettrice" : "payeuse"}
+        Société {type === "Company" ? "émettrice" : "payeuse"}
       </Heading>
       <SimpleGrid columns={2} columnGap={3} rowGap="6" w="full">
         <GridItem colSpan={2}>

@@ -1,4 +1,4 @@
-import { LineItem } from "../models/billing.ts";
+import { LineItem } from "../domains/entities/billing.ts";
 
 class Store {
   billing = {
