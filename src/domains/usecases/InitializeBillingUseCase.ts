@@ -25,6 +25,7 @@ export class InitializeBillingUseCase {
           description: "",
           unitPrice: 0,
           quantity: 1,
+          date: new Date(),
           totalPrice: 0,
         },
       ] as LineItem[],
