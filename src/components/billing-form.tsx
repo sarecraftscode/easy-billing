@@ -143,7 +143,7 @@ const BillingForm = () => {
                         }
                       />
                     </Td>
-                    <Td w="5%">
+                    <Td w="10%">
                       <Input
                         id="quantity"
                         name="quantity"
