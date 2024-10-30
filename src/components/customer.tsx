@@ -8,25 +8,25 @@ import {
   SimpleGrid,
   VStack,
 } from "@chakra-ui/react";
-import { CompanyModel } from "../domains/entities/companyModel.ts";
+import { CustomerModel } from "../domains/entities/customerModel.ts";
 
-interface CompanyProps {
-  company: CompanyModel;
-  updateCompany: (name: string, value: string) => void;
+interface CustomerProps {
+  customer: CustomerModel;
+  updateCustomer: (name: string, value: string) => void;
 }
 
-const Company = ({ company, updateCompany }: CompanyProps) => {
+const Customer = ({ customer, updateCustomer }: CustomerProps) => {
   return (
     <VStack spacing="3" alignItems="flex-start">
-      <Heading size="1xs">Société émettrice"</Heading>
+      <Heading size="1xs">Société payeuse"</Heading>
       <SimpleGrid columns={2} columnGap={3} rowGap="6" w="full">
         <GridItem colSpan={2}>
           <FormControl>
             <FormLabel>Nom</FormLabel>
             <Input
               placeholder="Boulevard"
-              onChange={(e) => updateCompany("name", e.target.value)}
-              value={company.name}
+              onChange={(e) => updateCustomer("name", e.target.value)}
+              value={customer.name}
             />
           </FormControl>
         </GridItem>
@@ -35,8 +35,8 @@ const Company = ({ company, updateCompany }: CompanyProps) => {
             <FormLabel>SIRET</FormLabel>
             <Input
               placeholder="33333333333333 "
-              value={company.siret}
-              onChange={(e) => updateCompany("siret", e.target.value)}
+              value={customer.siret}
+              onChange={(e) => updateCustomer("siret", e.target.value)}
             />
           </FormControl>
         </GridItem>
@@ -46,8 +46,8 @@ const Company = ({ company, updateCompany }: CompanyProps) => {
             <Input
               type="tel"
               placeholder="06000000"
-              value={company.phone}
-              onChange={(e) => updateCompany("phone", e.target.value)}
+              value={customer.phone}
+              onChange={(e) => updateCustomer("phone", e.target.value)}
             />
           </FormControl>
         </GridItem>
@@ -57,8 +57,8 @@ const Company = ({ company, updateCompany }: CompanyProps) => {
             <Input
               type="email"
               placeholder="test@test.com"
-              value={company.email}
-              onChange={(e) => updateCompany("email", e.target.value)}
+              value={customer.email}
+              onChange={(e) => updateCustomer("email", e.target.value)}
             />
           </FormControl>
         </GridItem>
@@ -67,8 +67,8 @@ const Company = ({ company, updateCompany }: CompanyProps) => {
             <FormLabel>Adresse</FormLabel>
             <Input
               placeholder="33 rue du père noel"
-              value={company.address}
-              onChange={(e) => updateCompany("address", e.target.value)}
+              value={customer.address}
+              onChange={(e) => updateCustomer("address", e.target.value)}
             />
           </FormControl>
         </GridItem>
@@ -91,4 +91,4 @@ const Company = ({ company, updateCompany }: CompanyProps) => {
   );
 };
 
-export default Company;
+export default Customer;

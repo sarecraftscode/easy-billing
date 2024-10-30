@@ -7,6 +7,8 @@ import {
   View,
 } from "@react-pdf/renderer";
 import { Billing } from "../domains/entities/billing";
+import { CompanyModel } from "../domains/entities/companyModel";
+import { CustomerModel } from "../domains/entities/customerModel";
 import formatDate from "../helpers/format-date";
 
 // Create styles for the PDF document
@@ -78,37 +80,31 @@ const styles = StyleSheet.create({
 
 type MyDocumentProps = {
   billing: Billing;
+  company: CompanyModel;
+  customer: CustomerModel;
 };
 
 // Create a PDF document component
-const MyDocument = ({ billing }: MyDocumentProps) => (
+const MyDocument = ({ billing, company, customer }: MyDocumentProps) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View>
         <Text style={styles.title}>Facture N°15</Text>
 
         <View style={styles.companyContainer}>
-          {billing.company && (
+          {company && (
             <View style={[styles.companySection, { alignSelf: "flex-end" }]}>
               <Text style={styles.header}>Société émettrice</Text>
-              <Text style={styles.product}>Nom: {billing.company?.name}</Text>
-              <Text style={styles.product}>
-                Adresse: {billing.company?.address}
-              </Text>
-              <Text style={styles.product}>
-                Téléphone: {billing.company?.phone}
-              </Text>
-              <Text style={styles.product}>
-                Email: {billing.company?.email}
-              </Text>
-              <Text style={styles.product}>
-                SIRET: {billing.company?.siret}
-              </Text>
+              <Text style={styles.product}>Nom: {company.name}</Text>
+              <Text style={styles.product}>Adresse: {company.address}</Text>
+              <Text style={styles.product}>Téléphone: {company.phone}</Text>
+              <Text style={styles.product}>Email: {company.email}</Text>
+              <Text style={styles.product}>SIRET: {company.siret}</Text>
             </View>
           )}
         </View>
         <View style={styles.customerContainer}>
-          {billing.customer && (
+          {customer && (
             <View
               style={[
                 styles.companySection,
@@ -116,19 +112,11 @@ const MyDocument = ({ billing }: MyDocumentProps) => (
               ]}
             >
               <Text style={styles.header}>Société payeuse</Text>
-              <Text style={styles.product}>Nom: {billing.customer?.name}</Text>
-              <Text style={styles.product}>
-                Adresse: {billing.customer?.address}
-              </Text>
-              <Text style={styles.product}>
-                Téléphone: {billing.customer?.phone}
-              </Text>
-              <Text style={styles.product}>
-                Email: {billing.customer?.email}
-              </Text>
-              <Text style={styles.product}>
-                SIRET: {billing.customer?.siret}
-              </Text>
+              <Text style={styles.product}>Nom: {customer.name}</Text>
+              <Text style={styles.product}>Adresse: {customer.address}</Text>
+              <Text style={styles.product}>Téléphone: {customer.phone}</Text>
+              <Text style={styles.product}>Email: {customer.email}</Text>
+              <Text style={styles.product}>SIRET: {customer.siret}</Text>
             </View>
           )}
         </View>
@@ -173,14 +161,20 @@ const MyDocument = ({ billing }: MyDocumentProps) => (
 );
 
 type BillingPreviewProps = {
+  company: CompanyModel;
+  customer: CustomerModel;
   billing: Billing;
 };
 
-const BillingPreview: React.FC<BillingPreviewProps> = ({ billing }) => {
+const BillingPreview: React.FC<BillingPreviewProps> = ({
+  billing,
+  company,
+  customer,
+}) => {
   return (
     <div className="container">
       <PDFViewer width="100%" height={800}>
-        <MyDocument billing={billing} />
+        <MyDocument company={company} customer={customer} billing={billing} />
       </PDFViewer>
     </div>
   );

@@ -8,28 +8,13 @@ describe("InitializeBillingUseCase", () => {
     const initializeBillingUseCase = new InitializeBillingUseCase();
 
     const intialBilling = {
-      emittingCompany: {
-        name: "",
-        type: "Emitting",
-        address: "",
-        phone: "",
-        email: "",
-        siret: "",
-      },
-      payingCompany: {
-        name: "",
-        type: "Paying",
-        address: "",
-        phone: "",
-        email: "",
-        siret: "",
-      },
       currentDate: new Date(),
       lineItems: [
         {
           description: "",
           unitPrice: 0,
           quantity: 1,
+          date: new Date(),
           totalPrice: 0,
         },
       ] as LineItem[],

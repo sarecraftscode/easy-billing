@@ -1,4 +1,4 @@
-export type CompanyModel = {
+export type CustomerModel = {
   name: string;
   address: string;
   phone: string;

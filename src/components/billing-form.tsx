@@ -23,12 +23,16 @@ import {
 } from "@chakra-ui/react";
 import formatAmount from "../helpers/format-amount.ts";
 import useBilling from "../hooks/use-billing.ts";
+import { useCompany } from "../hooks/use-company.ts";
+import { useCustomer } from "../hooks/use-customer.ts";
 import BillingPreview from "./billing-preview.tsx";
 import Company from "./company.tsx";
+import Customer from "./customer.tsx";
 
 const BillingForm = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const { company, updateCompany } = useCompany();
+  const { customer, updateCustomer } = useCustomer();
   const { billing, updateTotalAmount, updateCurrentDate, addNewLineItem } =
     useBilling();
 
@@ -44,7 +48,11 @@ const BillingForm = () => {
         <ModalContent>
           <ModalCloseButton />
           <ModalBody>
-            <BillingPreview billing={billing} />
+            <BillingPreview
+              company={company}
+              customer={customer}
+              billing={billing}
+            />
           </ModalBody>
 
           <ModalFooter>
@@ -75,7 +83,7 @@ const BillingForm = () => {
               alignItems="flex-start"
               margin="5"
             >
-              <Company type="Company" />
+              <Company company={company} updateCompany={updateCompany} />
             </VStack>
 
             <VStack
@@ -84,7 +92,7 @@ const BillingForm = () => {
               alignItems="flex-start"
               margin="5"
             >
-              <Company type="Customer" />
+              <Customer customer={customer} updateCustomer={updateCustomer} />
             </VStack>
           </Flex>
 

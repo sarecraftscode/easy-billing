@@ -3,22 +3,6 @@ import { Billing, LineItem } from "../entities/billing";
 export class InitializeBillingUseCase {
   execute(): Billing {
     return {
-      company: {
-        name: "",
-        type: "Company",
-        address: "",
-        phone: "",
-        email: "",
-        siret: "",
-      },
-      customer: {
-        name: "",
-        type: "Customer",
-        address: "",
-        phone: "",
-        email: "",
-        siret: "",
-      },
       currentDate: new Date(),
       lineItems: [
         {

@@ -1,5 +1,3 @@
-import { CompanyModel } from "./companyModel.ts";
-
 export type LineItem = {
   description: string;
   unitPrice: number;
@@ -10,8 +8,6 @@ export type LineItem = {
 };
 
 export type Billing = {
-  company?: CompanyModel;
-  customer?: CompanyModel;
   currentDate?: Date;
   lineItems?: LineItem[];
   totalAmount?: number;
