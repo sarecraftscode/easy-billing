@@ -18,7 +18,7 @@ interface CustomerProps {
 const Customer = ({ customer, updateCustomer }: CustomerProps) => {
   return (
     <VStack spacing="3" alignItems="flex-start">
-      <Heading size="1xs">Société payeuse"</Heading>
+      <Heading size="1xs">Société payeuse</Heading>
       <SimpleGrid columns={2} columnGap={3} rowGap="6" w="full">
         <GridItem colSpan={2}>
           <FormControl>
@@ -34,7 +34,7 @@ const Customer = ({ customer, updateCustomer }: CustomerProps) => {
           <FormControl>
             <FormLabel>SIRET</FormLabel>
             <Input
-              placeholder="33333333333333 "
+              placeholder="33333333333333"
               value={customer.siret}
               onChange={(e) => updateCustomer("siret", e.target.value)}
             />

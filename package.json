@@ -10,7 +10,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "e2e": "playwright test --ui",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.2.4",
@@ -19,6 +21,8 @@
     "@emotion/styled": "^11.13.0",
     "@preact/signals-react": "^2.2.0",
     "@react-pdf/renderer": "^4.0.0",
+    "@snek-at/storybook-addon-chakra-ui": "^1.1.0",
+    "@storybook/addon-themes": "^8.4.1",
     "framer-motion": "^11.11.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -28,8 +32,16 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.2",
     "@eslint/js": "^9.9.0",
     "@playwright/test": "^1.47.2",
+    "@storybook/addon-essentials": "^8.4.1",
+    "@storybook/addon-interactions": "^8.4.1",
+    "@storybook/addon-onboarding": "^8.4.1",
+    "@storybook/blocks": "^8.4.1",
+    "@storybook/react": "^8.4.1",
+    "@storybook/react-vite": "^8.4.1",
+    "@storybook/test": "^8.4.1",
     "@types/node": "^22.5.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -37,10 +49,12 @@
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
+    "eslint-plugin-storybook": "^0.10.2",
     "globals": "^15.9.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
+    "storybook": "^8.4.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
@@ -52,5 +66,10 @@
   "volta": {
     "node": "20.9.0",
     "npm": "9.6.7"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }

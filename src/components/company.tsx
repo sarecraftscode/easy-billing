@@ -18,7 +18,7 @@ interface CompanyProps {
 const Company = ({ company, updateCompany }: CompanyProps) => {
   return (
     <VStack spacing="3" alignItems="flex-start">
-      <Heading size="1xs">Société émettrice"</Heading>
+      <Heading size="1xs">Société émettrice</Heading>
       <SimpleGrid columns={2} columnGap={3} rowGap="6" w="full">
         <GridItem colSpan={2}>
           <FormControl>
